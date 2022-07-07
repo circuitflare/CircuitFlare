@@ -713,7 +713,7 @@ const Datasheet = () => {
 
         //setting total basket amount
         basketItems.map((curr) => {
-          totalBasketAmount += Number(curr.price);
+          totalBasketAmount += Number(curr.circuitFlarePurchasePrice);
         });
 
         //setting data to LS so that even if a user logs out they will see these items in basket page

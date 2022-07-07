@@ -86,7 +86,7 @@ const BasketItem = ({
 
     let totalDiscountAmount = 0;
     basketItems.map((item) => {
-      totalBasketAmount += Number(item.price);
+      totalBasketAmount += Number(item.circuitFlarePurchasePrice);
       totalDiscountAmount += Number(item.discount);
     });
 

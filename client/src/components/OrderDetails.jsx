@@ -71,7 +71,7 @@ const OrderDetails = () => {
       let totalDiscountAmount = 0
 
       basketItems.map((curr) => {
-        totalBasketAmount += curr.price
+        totalBasketAmount += curr.circuitFlarePurchasePrice
         totalDiscountAmount += curr.discount
       });
 
@@ -104,7 +104,7 @@ const OrderDetails = () => {
       let totalDiscountAmount = 0
 
       orderItems.map((curr) => {
-        totalBasketAmount += curr.price
+        totalBasketAmount += curr.circuitFlarePurchasePrice
         totalDiscountAmount += curr.discount
       });
 
@@ -295,7 +295,7 @@ const OrderDetails = () => {
                 changeToIndianFormat(Number(singleOrder.totalTransactionAmount).toFixed(2))}
             </p>
           </div>
-          <p>Your total savings on this order : ₹ {singleOrder && singleOrder.totalDiscountAmount}</p>
+          <p>Your total savings on this order : ₹ {singleOrder && changeToIndianFormat(Number(singleOrder.totalDiscountAmount).toFixed(2))}</p>
           <button onClick={handleAddToBasket}>Add to Basket</button>
         </div>
       </div>

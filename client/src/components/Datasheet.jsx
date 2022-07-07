@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import NavbarComp from "./NavbarComp";
 import axios from "axios";
-import {changeToIndianFormat} from '../utils/changeToIndianFormat'
+import { changeToIndianFormat } from "../utils/changeToIndianFormat";
 
 const MyVerticallyCenteredModal = (props) => {
   const navigate = useNavigate();
@@ -116,7 +116,10 @@ const Datasheet = () => {
         tempData[basket_id].itemDetails.distributorStocksForThatPart
       );
       // setUnitPrices(tempData[`${table_id}`].prices.INR);
-      setTotalCartItems(sessionStorage.getItem("basketItems") && (JSON.parse(sessionStorage.getItem("basketItems"))).length);
+      setTotalCartItems(
+        sessionStorage.getItem("basketItems") &&
+          JSON.parse(sessionStorage.getItem("basketItems")).length
+      );
       handleUnitPricesPerMOQ(tempData[basket_id].itemDetails);
     } else if (sessionStorage.getItem("dataTable")) {
       var tempData = JSON.parse(sessionStorage.getItem("dataTable"));
@@ -135,7 +138,10 @@ const Datasheet = () => {
         tempData[`${table_id}`].distributorStocksForThatPart
       );
       // setUnitPrices(tempData[`${table_id}`].prices.INR);
-      setTotalCartItems(sessionStorage.getItem("basketItems") && (JSON.parse(sessionStorage.getItem("basketItems"))).length);
+      setTotalCartItems(
+        sessionStorage.getItem("basketItems") &&
+          JSON.parse(sessionStorage.getItem("basketItems")).length
+      );
       handleUnitPricesPerMOQ(tempData[`${table_id}`]);
     } else {
       Swal.fire({
@@ -359,7 +365,7 @@ const Datasheet = () => {
     let newPriorityDistAsPerStockAvailbility = [];
 
     stocksForThatPart.map((value, id) => {
-      if (value !== "NA" && value !== "0") {
+      if (value !== "NA") {
         newPriorityDistAsPerStockAvailbility.push({
           dist: priorityDist[id],
           stock: value,
@@ -405,25 +411,35 @@ const Datasheet = () => {
           // console.log(distributorListProvidingThatPart[providerDist])
 
           for (let index in distributorListProvidingThatPart[providerDist]) {
-            // console.log(distributorListProvidingThatPart[providerDist][index])
-            // console.log(distributorListProvidingThatPart[providerDist][index].prices.INR)
+            // console.log(distributorListProvidingThatPart[providerDist][index].source_part_number)
 
-            distributorListProvidingThatPart[providerDist][
-              index
-            ].prices.INR.map((unitPrice, id) => {
-              // console.log(unitPrice);
-              allUnitPrices.push({
-                unit_break: unitPrice.unit_break,
-                unit_price: Number(unitPrice.unit_price),
-                distributor: providerDist,
-                stocks: Number(priorityDist.stock),
-                partName:
-                  distributorListProvidingThatPart[providerDist][index]
-                    .source_part_number,
+            //to avoid cases where there are two dots after the source_part_name that means that part is not distributed anymore
+            //for example search for fdll4148 and under element14 India , under "32" object there will be a source_part_number like "FDLL4148.."
+            //so we will strictly check if the source_part_number matches with what the user entered , that way "FDLL4148.." will not be considered as user searched for "FDLL4148"
+            if (
+              partDetails &&
+              partDetails.part_number ===
+                distributorListProvidingThatPart[providerDist][index]
+                  .source_part_number
+            ) {
+              // console.log(distributorListProvidingThatPart[providerDist][index].source_part_number)
+              distributorListProvidingThatPart[providerDist][
+                index
+              ].prices.INR.map((unitPrice, id) => {
+                // console.log(unitPrice);
+                allUnitPrices.push({
+                  unit_break: unitPrice.unit_break,
+                  unit_price: Number(unitPrice.unit_price),
+                  distributor: providerDist,
+                  stocks: Number(priorityDist.stock),
+                  partName:
+                    distributorListProvidingThatPart[providerDist][index]
+                      .source_part_number,
+                });
+
+                uniqueMOQ.add(unitPrice.unit_break);
               });
-
-              uniqueMOQ.add(unitPrice.unit_break);
-            });
+            }
           }
         }
       }
@@ -883,7 +899,7 @@ const Datasheet = () => {
         //setting total basket amount & total discount amount
         let totalDiscountAmount = 0;
         basketItems.map((curr) => {
-          totalBasketAmount += Number(curr.price);
+          totalBasketAmount += Number(curr.circuitFlarePurchasePrice);
           totalDiscountAmount += Number(curr.discount);
         });
 
@@ -1150,56 +1166,72 @@ const Datasheet = () => {
                           <div>Mouser :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[0])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[0]
+                              )}
                           </div>{" "}
                         </div>
                         <div>
                           <div>Digikey :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[1])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[1]
+                              )}
                           </div>{" "}
                         </div>
                         <div>
                           <div>element14 :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[2])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[2]
+                              )}
                           </div>{" "}
                         </div>
                         <div>
                           <div>Arrow :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[3])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[3]
+                              )}
                           </div>{" "}
                         </div>
                         <div>
                           <div>RS Components :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[4])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[4]
+                              )}
                           </div>{" "}
                         </div>
                         <div>
                           <div>SOS electronic :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[5])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[5]
+                              )}
                           </div>{" "}
                         </div>
                         <div>
                           <div>Symmetry :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[6])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[6]
+                              )}
                           </div>{" "}
                         </div>
                         <div>
                           <div>Verical :</div>{" "}
                           <div>
                             {partDetails &&
-                              changeToIndianFormat(partDetails.distributorStocksForThatPart[7])}
+                              changeToIndianFormat(
+                                partDetails.distributorStocksForThatPart[7]
+                              )}
                           </div>{" "}
                         </div>
                       </>
@@ -1210,7 +1242,9 @@ const Datasheet = () => {
                       <div style={{ fontWeight: "800" }}>
                         {partDetails && showQTYDist
                           ? changeToIndianFormat(totalStocksForQTY)
-                          : changeToIndianFormat(partDetails.totalCumulativeDistributorsStocks)}
+                          : changeToIndianFormat(
+                              partDetails.totalCumulativeDistributorsStocks
+                            )}
                       </div>{" "}
                     </div>
                   </div>
@@ -1250,9 +1284,11 @@ const Datasheet = () => {
                                 ₹{" "}
                                 {/* {Number(curr && curr.unitPrice).toFixed(2) *
                                 extraChargesInPercent} */}
-                                {changeToIndianFormat(Number(
-                                  curr && curr.maxUnitPriceWithTax
-                                ).toFixed(2) * extraChargesInPercent)}
+                                {changeToIndianFormat(
+                                  Number(
+                                    curr && curr.maxUnitPriceWithTax
+                                  ).toFixed(2) * extraChargesInPercent
+                                )}
                               </div>
                             ))}
                         </div>
@@ -1262,11 +1298,13 @@ const Datasheet = () => {
                             unitPrices.map((curr, id) => (
                               <div>
                                 ₹{" "}
-                                {changeToIndianFormat(Number(
-                                  Number(curr && curr.moq) *
-                                    (Number(curr.maxUnitPriceWithTax) *
-                                      extraChargesInPercent)
-                                ).toFixed(2))}
+                                {changeToIndianFormat(
+                                  Number(
+                                    Number(curr && curr.moq) *
+                                      (Number(curr.maxUnitPriceWithTax) *
+                                        extraChargesInPercent)
+                                  ).toFixed(2)
+                                )}
                               </div>
                             ))}
                         </div>

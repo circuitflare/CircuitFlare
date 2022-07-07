@@ -112,7 +112,7 @@ const Home = () => {
             let totalDiscountAmount = 0;
 
             finalBasketItems.map((curr) => {
-              totalBasketAmount += curr.price;
+              totalBasketAmount += curr.circuitFlarePurchasePrice;
               totalDiscountAmount += curr.discount;
             });
 
@@ -154,7 +154,7 @@ const Home = () => {
             let totalDiscountAmount = 0;
 
             DBcartItems.map((curr) => {
-              totalBasketAmount += curr.price;
+              totalBasketAmount += curr.circuitFlarePurchasePrice;
               totalDiscountAmount += curr.discount;
             });
 
@@ -180,7 +180,7 @@ const Home = () => {
           let totalDiscountAmount = 0;
 
           LocalcartItems.map((curr) => {
-            totalBasketAmount += curr.price;
+            totalBasketAmount += curr.circuitFlarePurchasePrice;
             totalDiscountAmount += curr.discount;
           });
 

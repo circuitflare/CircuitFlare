@@ -35,7 +35,7 @@ const Shopping_Basket = () => {
         let totalDiscountAmount = 0;
 
         cartItems.map((curr) => {
-          totalBasketAmount += Number(curr.price);
+          totalBasketAmount += Number(curr.circuitFlarePurchasePrice);
           totalDiscountAmount += curr.discount;
         });
 
@@ -98,7 +98,7 @@ const Shopping_Basket = () => {
     let totalDiscountAmount = 0;
 
     newBasketItems.map((curr) => {
-      totalBasketAmount += Number(curr.price);
+      totalBasketAmount += Number(curr.circuitFlarePurchasePrice);
       totalDiscountAmount += Number(curr.discount);
     });
 
@@ -377,7 +377,7 @@ const Shopping_Basket = () => {
           </div>
           <p>
             Your total savings on this order : ₹{" "}
-            {sessionStorage.getItem("totalDiscountAmount") && changeToIndianFormat(sessionStorage.getItem("totalDiscountAmount"))}
+            {sessionStorage.getItem("totalDiscountAmount") && changeToIndianFormat(Number(sessionStorage.getItem("totalDiscountAmount")).toFixed(2))}
           </p>
           <button onClick={handleCheckout}>Checkout</button>
         </div>
