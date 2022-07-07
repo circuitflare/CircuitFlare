@@ -1,0 +1,47 @@
+.tc_container {
+  margin: 100px 0 0 130px;
+}
+
+.tc_text {
+  text-align: left;
+  font: normal normal bold 30px/41px Nunito;
+  letter-spacing: 0.06px;
+  color: #000000;
+  opacity: 1;
+}
+
+@media (max-width: 1393px) {
+  .tc_container {
+    margin: 80px 0 0 150px;
+  }
+}
+
+@media (max-width: 1350px) {
+  .tc_container{
+      margin:50px 0 0 150px;
+  }
+}
+
+@media (max-width: 1275px) {
+  .tc_container {
+    margin: 60px 0 0 100px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tc_text {
+    font: normal normal bold 25px/41px Nunito;
+  }
+}
+
+@media (max-width: 984px) {
+  .tc_container {
+    margin: 30px 0 0 60px;
+  }
+}
+
+@media (max-width: 768px) {
+    .tc_text {
+      font: normal normal bold 23px/41px Nunito;
+    }
+  }

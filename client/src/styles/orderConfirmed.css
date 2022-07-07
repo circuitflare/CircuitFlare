@@ -1,0 +1,157 @@
+.oc_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.oc_heading div:first-child {
+  text-align: center;
+  font: normal normal bold 25px/41px Nunito;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.oc_heading div:first-child h1 {
+  font-weight: 900;
+}
+
+.och_sub {
+  margin: 9px 0 5px 0;
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.ty_text {
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.oc_summary {
+  margin-top: 25px;
+}
+
+.oc_summary h3 {
+  font: normal normal bold 20px/32px Nunito;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.oc_h_goodday {
+  font: normal normal bold 20px/32px Nunito;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  margin-top: -5px;
+}
+
+.oc_s_box {
+  display: flex;
+  flex-direction: column;
+  width: 485px;
+  height: 120px;
+  border: 1px solid #c4c4c4;
+  border-radius: 9px;
+  padding: 1%;
+}
+
+.oc_s_box div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -10px;
+}
+
+.oc_s_box div p:first-child {
+  width: 30%;
+  text-align: right;
+  font: normal normal 800 14px/19px Nunito;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.oc_s_box div p:last-child {
+  width: 30%;
+  text-align: left;
+  font: normal normal 800 14px/19px Nunito;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.oc_feedback {
+  margin:20px auto 0 290px;
+}
+
+.oc_feedback h3 {
+  font: normal normal bold 20px/32px Nunito;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.oc_f_textarea {
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  opacity: 1;
+  resize: none;
+  padding: 1%;
+}
+
+.oc_feedback button {
+  margin-top: 10px;
+  text-align: center;
+  font: normal normal bold 14px/19px Nunito;
+  letter-spacing: 0px;
+  color: #ffffff;
+  background-color: #0053f2;
+  cursor: pointer;
+  border:none;
+  padding:1.5% 5%;
+  border-radius:5px;
+}
+
+.oc_c_home {
+  text-align: center;
+  font: normal normal bold 18px/24px Nunito;
+  letter-spacing: 0px;
+  color: #0053f2;
+  opacity: 1;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+@media(max-width:1904px){
+  .oc_feedback {
+    margin:20px auto 0 470px;
+  }
+}
+
+@media(max-width:1537px){
+  .oc_feedback {
+    margin:20px auto 0 290px;
+  }
+}
+
+@media(max-width:1350px){
+  .oc_feedback {
+    margin:20px auto 0 190px;
+  }
+
+  .oc_c_home{
+    margin-bottom: 30px;
+  }
+}

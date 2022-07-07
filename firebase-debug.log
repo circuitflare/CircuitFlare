@@ -1,0 +1,43 @@
+[debug] [2022-06-13T08:33:29.064Z] ----------------------------------------------------------------------
+[debug] [2022-06-13T08:33:29.066Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\bhave\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-06-13T08:33:29.066Z] CLI Version:   11.0.1
+[debug] [2022-06-13T08:33:29.066Z] Platform:      win32
+[debug] [2022-06-13T08:33:29.066Z] Node Version:  v16.15.1
+[debug] [2022-06-13T08:33:29.067Z] Time:          Mon Jun 13 2022 14:03:29 GMT+0530 (India Standard Time)
+[debug] [2022-06-13T08:33:29.067Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-13T08:33:29.072Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-13T08:33:29.072Z] > authorizing via signed-in user (dev@circuitflare.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\study\Arctic Devs\CircuitFlare
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-06-13T08:35:06.380Z] > refreshing access token with scopes: []
+[debug] [2022-06-13T08:35:06.381Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-06-13T08:35:06.604Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Mon, 13 Jun 2022 08:35:06 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-06-13T08:35:06.614Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-06-13T08:35:07.326Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-06-13T08:35:07.326Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project circuit-flare-5 (circuit-flare-5) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

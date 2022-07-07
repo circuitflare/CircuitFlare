@@ -1,0 +1,102 @@
+.sr_container{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.sr_head {
+  text-align: left;
+  font: normal normal 800 22px/30px Nunito;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  margin-top:60px;
+}
+
+.sr_table {
+  width: 100%;
+  margin:0 auto;
+  overflow: scroll;
+}
+
+.sr_table > tr th {
+  background-color: #c4c4c4;
+  font-size: 17px;
+  font-family: Nunito;
+  padding: 1.5% 0%;
+  text-align: center;
+  border-left: 1px solid #707070;
+}
+
+.sr_table tr td {
+  text-align: center;
+  font-family: Nunito;
+  font-weight: 800;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  padding: 1% 0.5%;
+  border-left: 1px solid #707070;
+}
+
+.sr_table tr {
+  border-bottom: 1.5px dashed #707070;
+}
+
+.sr_table tr:first-child {
+  border-bottom: none;
+}
+
+.sr_table_scrollable{
+    
+}
+
+.sr_table tr td:first-child,
+.sr_table > tr th:first-child {
+  border-left: none;
+}
+
+.sr_table tr td:nth-child(2) {
+  text-align: left;
+}
+
+.sr_table > tr > th:first-child {
+  border-top-left-radius: 2px;
+}
+
+.sr_table > tr > th:last-child {
+  border-top-right-radius: 2px;
+  border-right: 1px solid #c4c4c4;
+  width:180px
+}
+
+.sr_table tr td:first-child {
+  border-left: 1px solid #c4c4c4;
+}
+.sr_table tr td:last-child {
+  border-right: 1px solid #c4c4c4;
+}
+
+@media (max-width:1350px) {
+  .sr_head {
+    text-align: left;
+    font: normal normal 800 22px/30px Nunito;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    margin: 60px 0 0 80px;
+  }
+
+}
+
+@media(max-width:1200px) {
+  .sr_container div{
+    overflow: scroll;
+  }
+
+  .sr_table {
+    width: 70%;
+    margin-top: 8px;
+    overflow-x: scroll;
+  }
+}
+
