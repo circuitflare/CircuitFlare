@@ -81,13 +81,7 @@ const AdminLogin = () => {
           icon: "success",
           confirmButtonText: "Close",
         }).then(() => navigate("/admin_orders"));
-      } else {
-        Swal.fire({
-          title: "User Is Not Authorized",
-          icon: "info",
-          confirmButtonText: "Close",
-        });
-      }
+      } 
     }
   }, []);
 

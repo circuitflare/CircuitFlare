@@ -134,7 +134,7 @@
   margin-top: 15px;
 }
 
-@media(max-width:1904px){
+@media(max-width:1920px){
   .oc_feedback {
     margin:20px auto 0 470px;
   }
@@ -146,9 +146,9 @@
   }
 }
 
-@media(max-width:1350px){
+@media(max-width:1367px){
   .oc_feedback {
-    margin:20px auto 0 190px;
+    margin:20px auto 0 200px;
   }
 
   .oc_c_home{

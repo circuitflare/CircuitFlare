@@ -98,7 +98,7 @@ const Datasheet = () => {
   //searching & setting for part details from the dataTable value in LS
   useEffect(() => {
     if (searchParams.get("basketItem")) {
-      console.log(searchParams.get("basketItem"));
+      // console.log(searchParams.get("basketItem"));
 
       var tempData = JSON.parse(sessionStorage.getItem("basketItems"));
       setDataTableLS(JSON.parse(sessionStorage.getItem("basketItems")));
@@ -418,7 +418,7 @@ const Datasheet = () => {
             //so we will strictly check if the source_part_number matches with what the user entered , that way "FDLL4148.." will not be considered as user searched for "FDLL4148"
             if (
               partDetails &&
-              partDetails.part_number ===
+              partDetails.source_part_number ===
                 distributorListProvidingThatPart[providerDist][index]
                   .source_part_number
             ) {
@@ -427,23 +427,31 @@ const Datasheet = () => {
                 index
               ].prices.INR.map((unitPrice, id) => {
                 // console.log(unitPrice);
-                allUnitPrices.push({
-                  unit_break: unitPrice.unit_break,
-                  unit_price: Number(unitPrice.unit_price),
-                  distributor: providerDist,
-                  stocks: Number(priorityDist.stock),
-                  partName:
-                    distributorListProvidingThatPart[providerDist][index]
-                      .source_part_number,
-                });
 
-                uniqueMOQ.add(unitPrice.unit_break);
+                //we will only store those moqs which are lesser or equal to the stock of the distributor providing it
+                // console.log(unitPrice.unit_break)
+                // console.log(priorityDist.stock)
+                if (unitPrice.unit_break <= Number(priorityDist.stock)) {
+                  allUnitPrices.push({
+                    unit_break: unitPrice.unit_break,
+                    unit_price: Number(unitPrice.unit_price),
+                    distributor: providerDist,
+                    stocks: Number(priorityDist.stock),
+                    partName:
+                      distributorListProvidingThatPart[providerDist][index]
+                        .source_part_number,
+                  });
+
+                  uniqueMOQ.add(unitPrice.unit_break);
+                }
               });
             }
           }
         }
       }
     });
+
+    console.log("without overheads",allUnitPrices);
 
     //changing all the unit prices in allUnitPrices array with taxed values
     allUnitPrices.map((curr, id) => {
@@ -455,7 +463,7 @@ const Datasheet = () => {
       curr.taxed_unit_price = Number(newTaxValue.toFixed(2));
     });
 
-    console.log(allUnitPrices);
+    console.log("added overheads",allUnitPrices);
 
     //now we will push all the unique moqs present in set into an temp array
     let temp = [];

@@ -533,7 +533,7 @@
   padding: 1.8%;
 }
 
-@media (max-width: 1904px) {
+@media (max-width: 1920px) {
   .ds_left_side {
     height: 60vh;
   }

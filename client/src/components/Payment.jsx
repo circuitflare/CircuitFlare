@@ -78,13 +78,13 @@ const Payment = () => {
   }, []);
 
   const handlePay = async () => {
-    let amount = parseFloat(transactionAmount.toFixed(2)) * 100;
+    let paymentAmount = Number((Number(transactionAmount) * 100).toFixed(0));
 
-    console.log(amount)
+    // console.log(paymentAmount)
 
     var options = {
       key: "rzp_test_pP7ickgViSu9RS", // Enter the Key ID generated from the Dashboard
-      amount: amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      amount: paymentAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: billingInfo.email,
       // image: "https://example.com/your_logo",

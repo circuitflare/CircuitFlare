@@ -144,7 +144,7 @@
   transform: translateX(-50px);
 }
 
-@media (max-width: 1904px) {
+@media (max-width: 1920px) {
   .navbar_comp {
     height: 9vh;
   }
@@ -226,7 +226,7 @@
   }
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1367px) {
   .navbar_comp {
     height: 10.5vh;
   }
