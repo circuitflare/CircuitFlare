@@ -451,7 +451,57 @@ const Datasheet = () => {
       }
     });
 
-    console.log("without overheads",allUnitPrices);
+    console.log("without overheads", allUnitPrices);
+
+    //if stock values are 0 for all the distributor then no unit prices will get stored in 
+    //allUnitPrices array , so for that case we will simply add unit price breaks in the allUnitprice array by not checking (unit_break <= dist stock)
+    if (allUnitPrices.length === 0) {
+      newPriorityDistributorsPricing.map((priorityDist, ind) => {
+        for (let providerDist in distributorListProvidingThatPart) {
+          if (providerDist === priorityDist.dist) {
+            // console.log(priorityDist)
+            // console.log(distributorListProvidingThatPart[providerDist])
+
+            for (let index in distributorListProvidingThatPart[providerDist]) {
+              // console.log(distributorListProvidingThatPart[providerDist][index].source_part_number)
+
+              //to avoid cases where there are two dots after the source_part_name that means that part is not distributed anymore
+              //for example search for fdll4148 and under element14 India , under "32" object there will be a source_part_number like "FDLL4148.."
+              //so we will strictly check if the source_part_number matches with what the user entered , that way "FDLL4148.." will not be considered as user searched for "FDLL4148"
+              if (
+                partDetails &&
+                partDetails.source_part_number ===
+                  distributorListProvidingThatPart[providerDist][index]
+                    .source_part_number
+              ) {
+                // console.log(distributorListProvidingThatPart[providerDist][index].source_part_number)
+                distributorListProvidingThatPart[providerDist][
+                  index
+                ].prices.INR.map((unitPrice, id) => {
+                  // console.log(unitPrice);
+
+                  //we will only store those moqs which are lesser or equal to the stock of the distributor providing it
+                  // console.log(unitPrice.unit_break)
+                  // console.log(priorityDist.stock)
+
+                  allUnitPrices.push({
+                    unit_break: unitPrice.unit_break,
+                    unit_price: Number(unitPrice.unit_price),
+                    distributor: providerDist,
+                    stocks: Number(priorityDist.stock),
+                    partName:
+                      distributorListProvidingThatPart[providerDist][index]
+                        .source_part_number,
+                  });
+
+                  uniqueMOQ.add(unitPrice.unit_break);
+                });
+              }
+            }
+          }
+        }
+      });
+    }
 
     //changing all the unit prices in allUnitPrices array with taxed values
     allUnitPrices.map((curr, id) => {
@@ -463,7 +513,7 @@ const Datasheet = () => {
       curr.taxed_unit_price = Number(newTaxValue.toFixed(2));
     });
 
-    console.log("added overheads",allUnitPrices);
+    console.log("added overheads", allUnitPrices);
 
     //now we will push all the unique moqs present in set into an temp array
     let temp = [];
